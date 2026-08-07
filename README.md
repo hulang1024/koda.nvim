@@ -99,7 +99,7 @@ Koda provides two ways to select variants:
 require("koda").setup({
   theme = { dark = "moss", light = "glade" }
 })
-vim.cmd("colorscheme koda") -- auto-switches between 'moss' and 'glade' 
+vim.cmd("colorscheme koda") -- auto-switches between 'moss' and 'glade'
 ```
 
 **2. Locked:** Use a specific variant like `colorscheme koda-moss` to lock the theme, regardless of background settings:
@@ -148,8 +148,12 @@ require("koda").setup({
     -- Override colors for the active variant
     -- Available keys (e.g., 'func') can be found in lua/koda/palette/
     colors = {
+      -- Apply to all variants:
       -- func = "#4078F2",
-      -- keyword = "#A627A4",
+
+      -- Or override per variant:
+      -- dark = { func = "#4078F2" },
+      -- moss = { keyword = "#A627A4" },
     },
 
     -- You can modify or extend highlight groups using the `on_highlights` configuration option
