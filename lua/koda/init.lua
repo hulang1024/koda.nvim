@@ -19,7 +19,8 @@ function M.get_palette(theme)
 
   -- Apply custom color overrides if they exist
   if config.options.colors and type(config.options.colors) == "table" then
-    palette = vim.tbl_deep_extend("force", palette, config.options.colors)
+    local colors = config.options.colors[theme] or config.options.colors
+    palette = vim.tbl_deep_extend("force", palette, colors)
   end
 
   return palette

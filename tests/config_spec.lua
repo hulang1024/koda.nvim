@@ -119,6 +119,16 @@ describe("Color overrides via get_palette", function()
     assert.are.equal("#eeeeee", palette.fg)
   end)
 
+  it("applies custom color overrides to the theme-specific palette", function()
+    local dark0 = Koda.get_palette("dark")
+    Config.setup({ colors = { moss = { border = "#000000" } } })
+    local dark1 = Koda.get_palette("dark")
+    local modified = Koda.get_palette("moss")
+
+    assert.are.equal(dark0.border, dark1.border, "border should be unchanged")
+    assert.are.equal("#000000", modified.border)
+  end)
+
   it("preserves non-overridden palette colors", function()
     local original = Koda.get_palette("dark")
     Config.setup({ colors = { bg = "#111111" } })
